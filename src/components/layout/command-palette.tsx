@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { useRouter } from "next/navigation";
 import { Command } from "cmdk";
 import {
   User,
@@ -28,7 +27,6 @@ interface CommandItem {
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
