@@ -11,7 +11,11 @@ export function ProjectCard({ project }: { project: ProjectEntry }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="card-hover glass group flex flex-col overflow-hidden rounded-2xl">
+    <motion.div
+      whileHover={{ y: -8 }}
+      transition={{ type: "spring", stiffness: 280, damping: 20 }}
+      className="glass group flex flex-col overflow-hidden rounded-2xl transition-shadow duration-300 hover:shadow-glow"
+    >
       {/* Placeholder visual */}
       <div
         className="relative flex h-48 items-center justify-center overflow-hidden"
@@ -23,10 +27,18 @@ export function ProjectCard({ project }: { project: ProjectEntry }) {
           className="absolute inset-0 opacity-40 bg-grid-pattern"
           style={{ maskImage: "radial-gradient(circle, black, transparent 70%)" }}
         />
-        <Sparkles
-          className="h-12 w-12 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12"
-          style={{ color: project.gradient[0] }}
-        />
+        <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+        <motion.div
+          initial={{ scale: 0, rotate: -45 }}
+          whileInView={{ scale: 1, rotate: 0 }}
+          viewport={{ once: true }}
+          transition={{ type: "spring", stiffness: 200, damping: 15 }}
+        >
+          <Sparkles
+            className="h-12 w-12 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12"
+            style={{ color: project.gradient[0] }}
+          />
+        </motion.div>
         <div className="absolute right-3 top-3">
           <Badge variant="outline" className="capitalize">
             {project.category === "ml"
@@ -137,6 +149,6 @@ export function ProjectCard({ project }: { project: ProjectEntry }) {
           </Button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

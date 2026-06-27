@@ -45,16 +45,27 @@ export function Skills() {
             const Icon = iconMap[category.icon as keyof typeof iconMap];
             return (
               <Reveal key={category.id} delay={idx * 0.06}>
-                <div className="card-hover glass group h-full rounded-2xl p-6">
+                <motion.div
+                  whileHover={{ y: -6, rotateX: 2, rotateY: -2 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="glass group h-full rounded-2xl p-6 transition-shadow duration-300 hover:shadow-glow"
+                  style={{ transformStyle: "preserve-3d" }}
+                >
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-accent-violet/20 to-accent-blue/20 text-accent-violet">
+                    <motion.div
+                      initial={{ scale: 0, rotate: -90 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ type: "spring", stiffness: 200, damping: 14, delay: idx * 0.06 }}
+                      className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-accent-violet/20 to-accent-blue/20 text-accent-violet transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+                    >
                       <Icon className="h-5 w-5" />
-                    </div>
+                    </motion.div>
                     <h3 className="font-display text-lg font-semibold">{category.title}</h3>
                   </div>
 
                   <div className="mt-6 flex flex-col gap-3.5">
-                    {category.skills.map((skill) => (
+                    {category.skills.map((skill, skillIdx) => (
                       <div key={skill.name}>
                         <div className="mb-1.5 flex items-center justify-between">
                           <span className="text-sm text-ink-muted">{skill.name}</span>
@@ -64,14 +75,18 @@ export function Skills() {
                             initial={{ width: 0 }}
                             whileInView={{ width: `${skill.level}%` }}
                             viewport={{ once: true }}
-                            transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
+                            transition={{
+                              duration: 0.9,
+                              ease: "easeOut",
+                              delay: 0.1 + skillIdx * 0.05,
+                            }}
                             className="h-full rounded-full bg-gradient-to-r from-accent-violet to-accent-blue"
                           />
                         </div>
                       </div>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               </Reveal>
             );
           })}

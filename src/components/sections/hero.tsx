@@ -27,6 +27,13 @@ const skillTokens = [
   "Pandas",
 ];
 
+const heroStats = [
+  { value: "8.5", suffix: "/10", label: "CGPA — AI & DS" },
+  { value: "6", suffix: "+", label: "Projects Shipped" },
+  { value: "3", suffix: "", label: "Internships" },
+  { value: "12", suffix: "K+", label: "Records Analyzed" },
+];
+
 export function Hero() {
   const reducedMotion = usePrefersReducedMotion();
   const typed = useTypingAnimation({ words: skillTokens, pauseDuration: 1400 });
@@ -154,19 +161,53 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="relative hidden lg:block"
         >
-          <div className="glass-strong relative mx-auto aspect-square w-full max-w-md rounded-3xl p-8">
-            <div className="absolute -top-6 -right-6 rounded-2xl border border-white/10 bg-void/80 px-4 py-3 font-mono text-xs shadow-glow backdrop-blur-xl">
+          <div className="glass-strong relative mx-auto w-full max-w-md rounded-3xl p-7">
+            <div className="absolute -top-5 -right-5 rounded-2xl border border-white/10 bg-void/80 px-4 py-3 font-mono text-xs shadow-glow backdrop-blur-xl">
               <span className="text-accent-cyan">model.predict()</span>
               <br />
               <span className="text-ink-faint">{"->"} fraud: False</span>
             </div>
-            <div className="absolute -bottom-6 -left-6 animate-float rounded-2xl border border-white/10 bg-void/80 px-4 py-3 font-mono text-xs shadow-glow-blue backdrop-blur-xl">
+            <div className="absolute -bottom-5 -left-5 animate-float rounded-2xl border border-white/10 bg-void/80 px-4 py-3 font-mono text-xs shadow-glow-blue backdrop-blur-xl">
               <span className="text-accent-blue">accuracy: 0.94</span>
             </div>
-            <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
-              <div className="font-mono text-sm text-ink-faint">CGPA</div>
-              <div className="font-display text-6xl font-bold text-gradient">8.5</div>
-              <div className="font-mono text-xs text-ink-faint">B.Tech AI & Data Science</div>
+
+            <div className="flex items-center justify-between border-b border-white/10 pb-4">
+              <span className="font-mono text-xs uppercase tracking-wider text-ink-faint">
+                Profile Snapshot
+              </span>
+              <span className="flex items-center gap-1.5 font-mono text-[10px] text-accent-cyan">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent-cyan animate-pulse" />
+                Live
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 py-6">
+              {heroStats.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + i * 0.08 }}
+                  className="rounded-xl bg-white/[0.03] p-4"
+                >
+                  <div className="font-display text-3xl font-bold text-gradient">
+                    {stat.value}
+                    <span className="text-xl">{stat.suffix}</span>
+                  </div>
+                  <div className="mt-1 font-mono text-[11px] text-ink-faint">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-2 border-t border-white/10 pt-5">
+              {["Python", "React.js", "Scikit-learn", "SQL", "Node.js"].map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-full border border-white/10 bg-white/[0.02] px-3 py-1 font-mono text-[10px] text-ink-muted"
+                >
+                  {tech}
+                </span>
+              ))}
             </div>
           </div>
         </motion.div>
