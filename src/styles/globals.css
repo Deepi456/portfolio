@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-geist: "Geist", system-ui, sans-serif;
+    --font-inter: "Inter", system-ui, sans-serif;
+    --font-geist-mono: "Geist Mono", ui-monospace, monospace;
+  }
+
+  * {
+    @apply border-surface-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-void text-ink-primary font-body antialiased;
+    background-image: radial-gradient(
+        circle at 20% 0%,
+        rgba(124, 92, 255, 0.12),
+        transparent 45%
+      ),
+      radial-gradient(circle at 85% 15%, rgba(77, 138, 255, 0.1), transparent 40%);
+    background-attachment: fixed;
+  }
+
+  html.light body {
+    @apply bg-light-bg text-[#15151F];
+    background-image: radial-gradient(
+        circle at 20% 0%,
+        rgba(124, 92, 255, 0.06),
+        transparent 45%
+      ),
+      radial-gradient(circle at 85% 15%, rgba(77, 138, 255, 0.05), transparent 40%);
+  }
+
+  ::selection {
+    background: rgba(124, 92, 255, 0.35);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a3d;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3a52;
+  }
+
+  /* Visible keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid #7c5cff;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08];
+  }
+
+  .glass-strong {
+    @apply bg-white/[0.05] backdrop-blur-2xl border border-white/[0.1];
+  }
+
+  html.light .glass {
+    @apply bg-black/[0.02] border-black/[0.06];
+  }
+
+  html.light .glass-strong {
+    @apply bg-black/[0.03] border-black/[0.08];
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent-violet via-accent-blue to-accent-cyan bg-clip-text text-transparent;
+  }
+
+  .section-padding {
+    @apply px-6 sm:px-10 lg:px-20 py-24 sm:py-32;
+  }
+
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-accent-violet/80;
+  }
+
+  .magnetic-btn {
+    @apply relative inline-flex items-center justify-center transition-transform duration-200 ease-out will-change-transform;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-glow;
+  }
+}
+
+@layer utilities {
+  .mask-fade-bottom {
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  }
+}
