@@ -4,18 +4,24 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { blogPosts, getPostBySlug } from "@/data/blog";
 
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const post = getPostBySlug(params.slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) return {};
   return { title: post.title, description: post.excerpt };
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) notFound();
 
   return (
