@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ArrowDown, FileDown, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -25,13 +26,6 @@ const skillTokens = [
   "Node.js",
   "Power BI",
   "Pandas",
-];
-
-const heroStats = [
-  { value: "8.5", suffix: "/10", label: "CGPA — AI & DS" },
-  { value: "6", suffix: "+", label: "Projects Shipped" },
-  { value: "3", suffix: "", label: "Internships" },
-  { value: "12", suffix: "K+", label: "Records Analyzed" },
 ];
 
 export function Hero() {
@@ -140,7 +134,7 @@ export function Hero() {
               const Icon = iconMap[link.icon as keyof typeof iconMap];
               return (
                 <Magnetic key={link.label} strength={0.4}>
-                  <a
+                  
                     href={link.href}
                     target={link.icon !== "mail" ? "_blank" : undefined}
                     rel="noreferrer"
@@ -159,57 +153,51 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative hidden lg:block"
+          className="relative order-first mx-auto lg:order-last lg:mx-0"
         >
-          <div className="glass-strong relative mx-auto w-full max-w-md rounded-3xl p-7">
-            <div className="absolute -top-5 -right-5 rounded-2xl border border-white/10 bg-void/80 px-4 py-3 font-mono text-xs shadow-glow backdrop-blur-xl">
-              <span className="text-accent-cyan">model.predict()</span>
-              <br />
-              <span className="text-ink-faint">{"->"} fraud: False</span>
-            </div>
-            <div className="absolute -bottom-5 -left-5 animate-float rounded-2xl border border-white/10 bg-void/80 px-4 py-3 font-mono text-xs shadow-glow-blue backdrop-blur-xl">
-              <span className="text-accent-blue">accuracy: 0.94</span>
-            </div>
+          <div
+            aria-hidden
+            className="absolute left-1/2 top-1/2 -z-10 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-80 blur-3xl"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(124,92,255,0.35) 0%, rgba(77,138,255,0.22) 45%, transparent 75%)",
+            }}
+          />
 
-            <div className="flex items-center justify-between border-b border-white/10 pb-4">
-              <span className="font-mono text-xs uppercase tracking-wider text-ink-faint">
-                Profile Snapshot
-              </span>
-              <span className="flex items-center gap-1.5 font-mono text-[10px] text-accent-cyan">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent-cyan animate-pulse" />
-                Live
-              </span>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 py-6">
-              {heroStats.map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.08 }}
-                  className="rounded-xl bg-white/[0.03] p-4"
-                >
-                  <div className="font-display text-3xl font-bold text-gradient">
-                    {stat.value}
-                    <span className="text-xl">{stat.suffix}</span>
-                  </div>
-                  <div className="mt-1 font-mono text-[11px] text-ink-faint">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap gap-2 border-t border-white/10 pt-5">
-              {["Python", "React.js", "Scikit-learn", "SQL", "Node.js"].map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full border border-white/10 bg-white/[0.02] px-3 py-1 font-mono text-[10px] text-ink-muted"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+          <div className="absolute -top-2 right-2 z-20 rounded-2xl border border-white/10 bg-void/80 px-4 py-3 font-mono text-xs shadow-glow backdrop-blur-xl sm:-top-4 sm:right-4">
+            <span className="text-accent-cyan">model.predict()</span>
+            <br />
+            <span className="text-ink-faint">{"->"} fraud: False</span>
           </div>
+          <div className="absolute -bottom-2 left-2 z-20 animate-float rounded-2xl border border-white/10 bg-void/80 px-4 py-3 font-mono text-xs shadow-glow-blue backdrop-blur-xl sm:-bottom-4 sm:left-4">
+            <span className="text-accent-blue">accuracy: 0.94</span>
+          </div>
+
+          <motion.div
+            className="group relative mx-auto h-[340px] w-[300px] sm:h-[440px] sm:w-[380px] lg:h-[78vh] lg:max-h-[640px] lg:w-[420px]"
+            animate={reducedMotion ? undefined : { y: [0, -7, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <div
+              className="relative h-full w-full transition-[filter] duration-500 group-hover:brightness-[1.08]"
+              style={{
+                maskImage:
+                  "radial-gradient(ellipse 72% 88% at 50% 42%, black 62%, transparent 100%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 72% 88% at 50% 42%, black 62%, transparent 100%)",
+              }}
+            >
+              <Image
+                src="/images/deepika-portrait.png"
+                alt={`${profile.name} — ${profile.title}`}
+                fill
+                priority
+                sizes="(max-width: 768px) 300px, (max-width: 1024px) 380px, 420px"
+                className="object-contain object-bottom drop-shadow-[0_0_50px_rgba(124,92,255,0.25)] transition-[filter] duration-500 group-hover:drop-shadow-[0_0_70px_rgba(124,92,255,0.4)]"
+              />
+            </div>
+          </motion.div>
         </motion.div>
       </div>
 
