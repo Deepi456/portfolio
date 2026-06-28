@@ -17,7 +17,7 @@ export const projects: ProjectEntry[] = [
       "Financial fraud datasets are inherently imbalanced — fraudulent transactions are a tiny fraction of the total, so a naive model can score well by simply predicting 'not fraud' every time.",
     solutions:
       "Addressed the imbalance directly during preprocessing before model training, then evaluated models on metrics suited to imbalanced classification rather than raw accuracy, ensuring the model stayed useful on real transaction patterns.",
-    githubUrl: profile.github,
+    githubUrl: "https://github.com/Deepi456/fraud-detection-case-study",
     gradient: ["#7C5CFF", "#4D8AFF"],
     category: "ml",
   },
@@ -36,7 +36,7 @@ export const projects: ProjectEntry[] = [
       "Raw transactional sales data was inconsistent and not analysis-ready — it needed substantial cleaning before any trend could be trusted.",
     solutions:
       "Built a transformation pass to clean and standardize the raw data ahead of reporting, ensuring every dashboard view reflected accurate, consistent figures rather than propagating source-data errors.",
-    githubUrl: profile.github,
+    githubUrl: "https://github.com/Deepi456/FUTURE_DS_01_Ecommerce_Sales_Dashboard",
     gradient: ["#4D8AFF", "#5CE1E6"],
     category: "data",
   },
@@ -74,7 +74,7 @@ export const projects: ProjectEntry[] = [
       "Civic complaint systems need to handle many different issue categories without the underlying architecture becoming brittle as new categories get added.",
     solutions:
       "Designed the platform architecture up front for scalable handling of multiple complaint categories, keeping reporting, tracking, and resolution workflows consistent regardless of issue type.",
-    githubUrl: profile.github,
+    githubUrl: "https://github.com/Deepi456/smart-complaint-assistant",
     gradient: ["#4D8AFF", "#7C5CFF"],
     category: "fullstack",
   },
@@ -94,7 +94,7 @@ export const projects: ProjectEntry[] = [
       "Public health datasets often contain inconsistencies and gaps that can distort trend analysis if not handled carefully before visualization.",
     solutions:
       "Cleaned and processed the raw dataset before any visualization step, so the resulting trend charts and insights were grounded in accurate, analysis-ready data.",
-    githubUrl: profile.github,
+    githubUrl: "https://github.com/Deepi456/covid19-analysis",
     gradient: ["#5CE1E6", "#7C5CFF"],
     category: "data",
   },

@@ -3,8 +3,6 @@ import type { SocialLink } from "@/types";
 export const profile = {
   name: "Deepika R",
   title: "Data Science Professional",
-  // A short rotating-role set used by the hero typing animation —
-  // derived directly from the resume's summary + skill domains.
   roles: [
     "Data Science Professional",
     "Machine Learning Enthusiast",
@@ -14,8 +12,8 @@ export const profile = {
   location: "Coimbatore, Tamil Nadu, India",
   email: "ravideepika991@gmail.com",
   phone: "+91 9629968985",
-  github: "https://github.com/Deep1456",
-  githubHandle: "Deep1456",
+  github: "https://github.com/Deepi456",
+  githubHandle: "Deepi456",
   linkedin: "https://www.linkedin.com/in/deepika-ad",
   linkedinHandle: "deepika-ad",
   summary:
