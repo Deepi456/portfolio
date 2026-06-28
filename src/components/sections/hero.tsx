@@ -164,15 +164,6 @@ export function Hero() {
             }}
           />
 
-          <div className="absolute -top-2 right-2 z-20 rounded-2xl border border-white/10 bg-void/80 px-4 py-3 font-mono text-xs shadow-glow backdrop-blur-xl sm:-top-4 sm:right-4">
-            <span className="text-accent-cyan">model.predict()</span>
-            <br />
-            <span className="text-ink-faint">{"->"} fraud: False</span>
-          </div>
-          <div className="absolute -bottom-2 left-2 z-20 animate-float rounded-2xl border border-white/10 bg-void/80 px-4 py-3 font-mono text-xs shadow-glow-blue backdrop-blur-xl sm:-bottom-4 sm:left-4">
-            <span className="text-accent-blue">accuracy: 0.94</span>
-          </div>
-
           <motion.div
             className="group relative mx-auto h-[340px] w-[300px] sm:h-[440px] sm:w-[380px] lg:h-[78vh] lg:max-h-[640px] lg:w-[420px]"
             animate={reducedMotion ? undefined : { y: [0, -7, 0] }}
