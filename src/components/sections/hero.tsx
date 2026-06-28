@@ -134,7 +134,7 @@ export function Hero() {
               const Icon = iconMap[link.icon as keyof typeof iconMap];
               return (
                 <Magnetic key={link.label} strength={0.4}>
-                  
+                  <a
                     href={link.href}
                     target={link.icon !== "mail" ? "_blank" : undefined}
                     rel="noreferrer"
