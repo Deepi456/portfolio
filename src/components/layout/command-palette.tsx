@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, type ElementType } from "react";
+import { useEffect, useState, useCallback, type ComponentType } from "react";
 import { Command } from "cmdk";
 import {
   User,
@@ -20,7 +20,7 @@ import { profile } from "@/data/profile";
 interface CommandItem {
   id: string;
   label: string;
-  icon: ElementType;
+  icon: ComponentType<{ className?: string }>;
   action: () => void;
   group: string;
 }
